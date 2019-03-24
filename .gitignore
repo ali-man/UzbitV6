@@ -1,0 +1,4 @@
+venv/
+.idea/
+manage.py
+UzbitV6/local_settings.py
