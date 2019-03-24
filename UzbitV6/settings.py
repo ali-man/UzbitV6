@@ -10,7 +10,7 @@ if LOCAL:
     ALLOWED_HOSTS = []
 else:
     DEBUG = False
-    ALLOWED_HOSTS = ['uzbit.uz', 'www.uzbit.uz']
+    ALLOWED_HOSTS = ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'admin_tools',
