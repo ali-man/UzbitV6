@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/libs/bootstrap.min.css' %}">
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/libs/mdb.min.css' %}">
+    <!-- Your custom styles (optional) -->
+    {% block css %}{% endblock %}
+
+    <title>
+    {% block title %}
+        Базовый шаблон
+    {% endblock %}
+    </title>
+</head>
+<body>
+
+
+{% include 'www/header.html' %}
+
+
+
+
+
+
+
+{% block main-content %}{% endblock %}
+
+
+
+
+
+
+
+{% include 'www/footer.html' %}
+
+
+
+
+    <!-- JQuery -->
+    <script src="{% static 'js/libs/jquery-3.3.1.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/libs/bootstrap.min.js' %}"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="{% static 'js/libs/mdb.min.js' %}"></script>
+    <!--Initializations-->
+{% block js %}{% endblock %}
+
+</body>
+</html>
