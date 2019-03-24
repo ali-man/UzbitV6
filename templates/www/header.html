@@ -1,8 +1,10 @@
+{% load static %}
+
 <div class="header">
     <div class="user-profile">
         <div class="container">
-            <div class="row">
-                <div class="col-4 offset-8">
+            <div class="row bg-gray">
+                <div class="col-4 offset-8 d-flex justify-content-end align-items-center">
                     {% include 'www/header/user-profile.html' %}
                 </div>
             </div>
@@ -10,11 +12,19 @@
     </div>
     <div class="logo-menu">
         <div class="container">
-            <div class="col-4">
-                Logo
-            </div>
-            <div class="col-8">
-                Menu
+            <div class="row d-flex justify-content-between">
+                <div class="col-4 d-flex align-items-center">
+                    <img src="{% static 'img/logo.png' %}" alt="">
+                </div>
+                <div class="col-8 d-flex justify-content-end align-items-center">
+                    <ul class="top-menu">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/">Новости / Статьи</a></li>
+                        <li><a href="/">Файлы</a></li>
+                        <li><a href="/">Блог</a></li>
+                        <li><a href="/">Форум</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -22,10 +32,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    Online
+                    <h5>Status server</h5>
                 </div>
                 <div class="col-6">
-                    Information
+                    <div class="mini-inf">
+                        <h5>Lorem ipsum dolor sit amet.</h5>
+                    </div>
                 </div>
             </div>
         </div>

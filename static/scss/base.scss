@@ -1,2 +1,11 @@
 @import "base/header";
 @import "base/footer";
+@import "components/colors";
+
+body {
+  background-color: #fff;
+}
+
+.bg-gray {
+  background-color: $color4;
+}
