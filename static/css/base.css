@@ -1,0 +1,19 @@
+ul.top-menu {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  ul.top-menu li {
+    float: left;
+    padding: 0 8px; }
+    ul.top-menu li a {
+      color: gray;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px; }
+
+body {
+  background-color: #fff; }
+
+.bg-gray {
+  background-color: #f0f2f4; }
