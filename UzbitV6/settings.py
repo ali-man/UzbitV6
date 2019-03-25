@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'bs4',
 
     'www.apps.WwwConfig',
+    # 'api',
 ]
 
 REST_FRAMEWORK = {

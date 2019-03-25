@@ -14,4 +14,5 @@ urlpatterns = [
     path('api_auth/', include('rest_framework.urls')),
 
     path('', HomePageViews.as_view(), name='home'),
+    path('ajax/', include('www.urls', namespace='ajax')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
