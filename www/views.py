@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
@@ -36,5 +36,12 @@ class AjaxQuery:
         else:
             return JsonResponse({'error': 'Неверный запрос'})
 
-    def register(self, request):
+    @staticmethod
+    def logout(request):
+        logout(request)
+        print(request)
+        return JsonResponse({'ok': 'Вы разлогинились'})
+
+    @staticmethod
+    def register(request):
         pass

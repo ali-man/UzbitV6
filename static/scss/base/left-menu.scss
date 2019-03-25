@@ -1,0 +1,31 @@
+ul.left-menu {
+  display: inline-block;
+  width: 100%;
+  list-style-type: none;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  li {
+    border-bottom: 1px solid #ccc;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    &:first-child {
+      border-color: red;
+      & i {
+        color: red;
+      }
+    }
+    i {
+      color: #ccc;
+      font-size: 14px;
+    }
+    a {
+      margin-left: 15px;
+      font-size: 14px;
+      text-decoration: none;
+      color: gray;
+    }
+  }
+}

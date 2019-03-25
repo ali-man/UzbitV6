@@ -1,11 +1,17 @@
 @import "base/header";
 @import "base/footer";
+@import "base/left-menu";
 @import "components/colors";
 
 body {
-  background-color: #fff;
+  background-image: url('../img/bg1.jpg');
 }
 
-.bg-gray {
-  background-color: $color4;
+.box-shadow {
+  -webkit-box-shadow: 0 1px 3px 0px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 3px 0px rgba(0,0,0,.2);
+  box-shadow: 0 1px 3px 0px rgba(0,0,0,.2);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }

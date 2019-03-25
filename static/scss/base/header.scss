@@ -1,18 +1,33 @@
 @import "../components/colors";
 
-ul.top-menu {
-  display: inline-block;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  li {
-    float: left;
-    padding: 0 8px;
-    a {
-      color: gray;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-size: 14px;
+.header {
+  background-color: #fff;
+  width: 100%;
+  height: 45px;
+  margin: 50px auto 0;
+  .logo {
+    &__img {}
+    &__title {}
+  }
+  .login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__register {
+      &__title {}
     }
+    &__auth {
+      &__title {}
+    }
+  }
+}
+
+.border-bottom_line {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  .bb-line {
+    width: 100%;
+    height: 3px;
   }
 }

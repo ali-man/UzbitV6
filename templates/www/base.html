@@ -7,9 +7,9 @@
     {% block css %}{% endblock %}
 
     <title>
-    {% block title %}
-        Базовый шаблон
-    {% endblock %}
+        {% block title %}
+            Базовый шаблон
+        {% endblock %}
     </title>
 </head>
 <body>
@@ -18,33 +18,37 @@
 {% include 'www/header.html' %}
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            {% block left-menu %}
+                {% include 'www/left-menu.html' %}
+            {% endblock %}
+        </div>
 
+        <div class="col-9">
+            {% block main-content %}
 
-
-
-
-{% block main-content %}{% endblock %}
-
-
-
-
-
+            {% endblock %}
+        </div>
+    </div>
+</div>
 
 
 {% include 'www/footer.html' %}
 
 
+<!-- JQuery -->
+<script src="{% static 'js/libs/jquery-3.3.1.min.js' %}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'js/libs/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/libs/popper.min.js' %}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/libs/mdb.min.js' %}"></script>
+<!--Initializations-->
+<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sign-in.js' %}"></script>
 
-
-    <!-- JQuery -->
-    <script src="{% static 'js/libs/jquery-3.3.1.min.js' %}"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="{% static 'js/libs/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/libs/popper.min.js' %}"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="{% static 'js/libs/mdb.min.js' %}"></script>
-    <!--Initializations-->
-    <script type="text/javascript" src="{% static 'js/sign-in.js' %}"></script>
 {% block js %}{% endblock %}
 
 </body>
