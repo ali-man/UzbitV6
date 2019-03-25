@@ -8,7 +8,8 @@ function ajaxQuery(_url, _method, _data) {
             console.log('Идёт загрузка');
         },
         success: function (data) {
-            return data;
+            console.log(data);
         }
     });
+    window.location.replace('/');
 }

@@ -17,7 +17,23 @@
       &__title {}
     }
     &__auth {
-      &__title {}
+      position: relative;
+      &__title {
+        cursor: pointer;
+      }
+      &__box-hide {
+        border: 1px solid #ccc;
+        width: 275px;
+        height: auto;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        top: 30px;
+        z-index: 1;
+        padding: 25px;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
     }
   }
 }
@@ -30,4 +46,9 @@
     width: 100%;
     height: 3px;
   }
+}
+
+.md-form {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

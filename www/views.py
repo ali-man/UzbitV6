@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
 
@@ -26,7 +26,8 @@ class AjaxQuery:
                 if user is not None:
                     if user.is_active:
                         login(request, user)
-                        return JsonResponse({'ok': 'Успешная авторизация'})
+                        # return JsonResponse({'ok': 'Успешная авторизация'})
+                        return redirect('/')
                     else:
                         return JsonResponse({'error': 'Ваш аккаунт заблокирован'})
                 else:
@@ -40,7 +41,8 @@ class AjaxQuery:
     def logout(request):
         logout(request)
         print(request)
-        return JsonResponse({'ok': 'Вы разлогинились'})
+        # return JsonResponse({'ok': 'Вы разлогинились'})
+        return redirect('/')
 
     @staticmethod
     def register(request):

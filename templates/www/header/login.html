@@ -1,5 +1,8 @@
 {% if user.is_authenticated %}
-    asd
+    <div class="login">
+        <div class="login__notification">Уведомления</div>
+        <div id="logout" class="login__profile">Профиль</div>
+    </div>
 {% else %}
 
     <div class="login">
@@ -7,7 +10,22 @@
             <span class="login__register__title">Регистрация</span>
         </div>
         <div class="login__auth">
-            <span class="login__auth__title">Войти</span>
+            <span id="sign-in" class="login__auth__title">Войти</span>
+            <span id="sign-in_display" class="login__auth__box-hide box-shadow d-none">
+                <div class="md-form">
+                    <i class="fas fa-user prefix"></i>
+                    <input id="login_username" type="text" length="8" class="form-control" autocomplete="off">
+                    <label for="login_username">Ваше имя</label>
+                </div>
+                <div class="md-form">
+                    <i class="fas fa-lock prefix"></i>
+                    <input id="login_password" type="password" length="8" class="form-control"
+                           autocomplete="new-password">
+                    <label for="login_password">Ваш пароль</label>
+                </div>
+                {% csrf_token %}
+                <button type="button" id="login-submit" class="btn btn-success btn-sm">Войти</button>
+            </span>
         </div>
     </div>
 
