@@ -34,10 +34,10 @@ ul.left-menu {
       ul.left-menu li:first-child i {
         color: red; }
     ul.left-menu li i {
+      width: 40px;
       color: #ccc;
       font-size: 14px; }
     ul.left-menu li a {
-      margin-left: 15px;
       font-size: 14px;
       text-decoration: none;
       color: gray; }
