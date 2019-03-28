@@ -1,0 +1,9 @@
+@import "../components/colors";
+
+.main-container {
+  display: block;
+  width: 100%;
+  background-color: $color-general;
+  padding: 10px;
+  min-height: 300px;
+}

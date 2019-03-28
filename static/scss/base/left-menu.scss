@@ -2,30 +2,31 @@ ul.left-menu {
   display: inline-block;
   width: 100%;
   list-style-type: none;
-  background-color: #fff;
+  background-color: $color-general;
   margin: 0;
   padding: 0;
   li {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $color-line;
     height: 50px;
     display: flex;
     align-items: center;
     padding-left: 25px;
     &:first-child {
-      border-color: red;
+      border-bottom: 2px solid $color-additional;
       & i {
-        color: red;
+        color: $color-additional;
       }
-    }
-    i {
-      width: 40px;
-      color: #ccc;
-      font-size: 14px;
     }
     a {
       font-size: 14px;
       text-decoration: none;
-      color: gray;
+      color: $color-text;
+      &:hover {
+        color: $color-hover;
+      }
+      i {
+        width: 40px;
+      }
     }
   }
 }

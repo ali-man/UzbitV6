@@ -7,7 +7,6 @@
   margin: 50px auto 0;
   .logo {
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 40px;
     &__img {}
@@ -19,12 +18,37 @@
     align-items: center;
     height: 40px;
     &__register {
-      &__title {}
+      &__title {
+        cursor: pointer;
+        font-size: 14px;
+        color: $color-text;
+        &:hover {
+          color: $color-hover;
+        }
+        i {
+          padding-right: 5px;
+        }
+      }
+      &__box-hide {
+        border: 1px solid #ccc;
+        width: 250px;
+        height: auto;
+        background-color: #fff;
+        position: absolute;
+        left: 15px;
+        top: 38px;
+        z-index: 1;
+        padding: 25px;
+        form {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+      }
     }
     &__auth {
       position: relative;
       &__title {
-        cursor: pointer;
+        @extend .login__register__title;
       }
       &__box-hide {
         border: 1px solid #ccc;

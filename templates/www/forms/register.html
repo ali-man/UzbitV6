@@ -1,0 +1,24 @@
+<form action="{% url 'ajax:register' %}" method="POST">
+    <div class="md-form">
+        <i class="fas fa-user prefix"></i>
+        <input id="register_username" name="username" type="text" class="form-control">
+        <label for="register_username">Ваше имя</label>
+    </div>
+    <div class="md-form">
+        <i class="fas fa-user prefix"></i>
+        <input id="register_email" name="email" type="email" class="form-control">
+        <label for="register_email">Ваша почта</label>
+    </div>
+    <div class="md-form">
+        <i class="fas fa-user prefix"></i>
+        <input id="register_password1" name="password1" type="password" class="form-control">
+        <label for="register_password1">Ваш пароль</label>
+    </div>
+    <div class="md-form">
+        <i class="fas fa-user prefix"></i>
+        <input id="register_password2" name="password2" type="password" class="form-control">
+        <label for="register_password2">Повторите пароль</label>
+    </div>
+    {% csrf_token %}
+    <button type="submit" id="register-submit" class="btn btn-success btn-sm">Создать</button>
+</form>

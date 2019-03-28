@@ -1,4 +1,5 @@
 @import "base/header";
+@import "base/main";
 @import "base/footer";
 @import "base/left-menu";
 @import "components/colors";
@@ -19,4 +20,28 @@ body {
 
 .md-form label {
   font-size: 14px;
+}
+
+.success {
+  background-color: #00C851;
+}
+.error {
+  background-color: #FF3547;
+}
+
+ul.messages {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 0;
+  list-style: none;
+  z-index: 99;
+  li {
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: .8;
+    padding: 10px 15px;
+    margin: 0 0 5px;
+  }
 }

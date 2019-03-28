@@ -14,6 +14,13 @@
 </head>
 <body>
 
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
 {% include 'www/header.html' %}
 
@@ -27,9 +34,10 @@
         </div>
 
         <div class="col-12 col-md-9">
-            {% block main-content %}
-
-            {% endblock %}
+            <div class="main-container box-shadow">
+                {% block main-content %}
+                {% endblock %}
+            </div>
         </div>
     </div>
 </div>

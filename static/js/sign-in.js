@@ -1,40 +1,42 @@
 $(document).ready(function () {
 
     let loginLink = $('#sign-in');
-    let logoutLink = $('#logout');
-    // let loginSubmit = $('#login-submit');
+    let registerLink = $('#register');
     let csrf = $("input[name=csrfmiddlewaretoken]").val();
 
     loginLink.on("click", function () {
-        $("#sign-in_display").toggleClass("d-none");
+        let singInDisplay = $("#sign-in_display");
+        let registerDisplay = $("#register_display");
+        if (registerDisplay.hasClass("d-none") !== true)
+            registerDisplay.toggleClass("d-none");
+        singInDisplay.toggleClass("d-none");
     });
 
-    // loginSubmit.click(function () {
-    //    let username = $("#login_username").val();
-    //    let password = $("#login_password").val();
-    //    let url = '/ajax/login/';
-    //    let method = 'GET';
-    //    let data = {
-    //        csrfmiddlewaretoken: csrf,
-    //        username: username,
-    //        password: password
-    //    };
-    //    ajaxQuery(url, method, data);
-    //    console.log(username);
-    //    console.log(password);
-    // });
-    //
-    // logoutLink.on("click", function () {
-    //     let
-    //         url = '/ajax/logout/',
-    //         method = 'GET',
-    //         data = {
-    //             csrfmiddlewaretoken: csrf
-    //         };
-    //     let result = ajaxQuery(url, method, data);
-    //
-    //     console.log(result.ajax.success());
-    //     // else if (result.error) console.log(result);
-    // })
+    registerLink.on("click", function () {
+        let registerDisplay = $("#register_display");
+        let singInDisplay = $("#sign-in_display");
+        if (singInDisplay.hasClass("d-none") !== true)
+            singInDisplay.toggleClass("d-none");
+        registerDisplay.toggleClass("d-none");
+    });
+
+    let $message = $('.messages');
+    if ($message[0] !== undefined){
+        setTimeout(function () {
+            $message.stop().animate({
+                opacity: 0,
+            }, 800, function () {
+                $(this).remove();
+            })
+        }, 5000);
+
+        $message.children('li').click(function () {
+            $(this).stop().animate({
+                opacity: 0,
+            }, 800, function () {
+                $(this).remove();
+            })
+        })
+    }
 
 });

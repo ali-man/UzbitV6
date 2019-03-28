@@ -7,27 +7,21 @@
 
     <div class="login">
         <div class="login__register">
-            <span class="login__register__title">Регистрация</span>
+            <span id="register" class="login__register__title">
+                <i class="fas fa-cash-register"></i>
+                Регистрация
+            </span>
+            <span id="register_display" class="login__register__box-hide box-shadow d-none">
+                {% include 'www/forms/register.html' %}
+            </span>
         </div>
         <div class="login__auth">
-            <span id="sign-in" class="login__auth__title">Войти</span>
+            <span id="sign-in" class="login__auth__title">
+                <i class="fas fa-door-open"></i>
+                Войти
+            </span>
             <span id="sign-in_display" class="login__auth__box-hide box-shadow d-none">
-                <form action="{% url 'ajax:login' %}" method="GET">
-                    <div class="md-form">
-                        <i class="fas fa-user prefix"></i>
-                        <input id="login_username" name="username" type="text" length="8" class="form-control"
-                               autocomplete="off">
-                        <label for="login_username">Ваше имя</label>
-                    </div>
-                    <div class="md-form">
-                        <i class="fas fa-lock prefix"></i>
-                        <input id="login_password" name="password" type="password" length="8" class="form-control"
-                               autocomplete="off">
-                        <label for="login_password">Ваш пароль</label>
-                    </div>
-                    {% csrf_token %}
-                    <button type="submit" id="login-submit" class="btn btn-success btn-sm">Войти</button>
-                </form>
+                {% include 'www/forms/sign-in.html' %}
             </span>
         </div>
     </div>
