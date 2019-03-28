@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -14,7 +14,11 @@
 
 
 {% block main-content %}
-MAIN CONTENT
+
+    {% if user.is_authenticated %}
+        {% include 'www/add-article.html' %}
+    {% endif %}
+
 {% endblock %}
 
 

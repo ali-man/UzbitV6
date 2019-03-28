@@ -29,6 +29,8 @@ body {
   background-color: #FF3547;
 }
 
+
+// Django messages notification
 ul.messages {
   position: absolute;
   top: 5px;
@@ -44,4 +46,8 @@ ul.messages {
     padding: 10px 15px;
     margin: 0 0 5px;
   }
+}
+
+select {
+  display: block!important;
 }

@@ -7,14 +7,25 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
+from www.forms import ArticleForm
+from www.models import Tags, CategoryOfArticles
+
 
 class HomePageViews(View):
     def get(self, request):
+        # data = {
+        #     'category': CategoryOfArticles.objects.all(),
+        #     'tags': Tags.objects.all()
+        # }
+        # form = PostAdminForm(data)
+        form = ArticleForm()
 
         return render(request, 'www/home.html', locals())
 
     def post(self, request):
-        pass
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
 
 
 class AjaxQuery:

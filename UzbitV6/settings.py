@@ -115,6 +115,8 @@ CKEDITOR_JQUERY_URL = 'static/js/jquery.min.js'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Full',
+        'width': '100%',
+        'height': 70,
     }, }
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 # -------------------- ckeditor -----------------------

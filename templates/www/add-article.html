@@ -1,0 +1,49 @@
+{% load static %}
+<div class="add-post">
+    <div class="row mx-2 pb-2">
+        <div class="col-12 col-md-3">
+            <div class="owner-info">
+                <div class="owner-info__avatar">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar }}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
+                {% else %}
+                    <img src="{% static 'img/avatar.jpg' %}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
+                {% endif %}
+                </div>
+                <div class="owner-info__about">
+                    <span class="owner-info__about__username">Hello, {{ user.username }}</span>
+                    <span class="owner-info__about__point">Points: $500</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="owner-info__number-articles">
+                <span class="title">Количество статей</span>
+                <span class="number">1142</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="owner-info__number-articles-moderation">
+                <span class="title">На модерации</span>
+                <span class="number">3</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="owner-info__number-likes">
+                <span class="title">Пролайканно</span>
+                <span class="number">1233</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="article-info">
+                <form action="{% url 'home' %}" method="POST">
+                    {{ form }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Добавить на сайт</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
