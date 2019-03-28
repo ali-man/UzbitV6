@@ -9,7 +9,7 @@ function ajaxQuery(_url, _method, _data) {
         },
         success: function (data) {
             console.log(data);
+            window.location.replace('/');
         }
     });
-    window.location.replace('/');
 }
