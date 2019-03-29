@@ -1,0 +1,47 @@
+<div class="content-main">
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <div class="last-articles">
+                <h3 class="last-articles_title">Новые статьи</h3>
+                <div class="last-articles_box scrollbar scrollbar-primary">
+                <div class="force-overflow">
+                    <div class="last-articles_box__header">
+                        <span class="title">Описание</span>
+                        <span class="views">Просмотров</span>
+                        <span class="comments">Ком.</span>
+                        <span class="date">Дата</span>
+                    </div>
+                    <div class="last-articles_box__body">
+                    {% for article in articles %}
+                        <div class="last-articles_box__body-item">
+                            <div class="items-info">
+                            {% if article.poster %}
+                                <img src="{{ article.poster.url }}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
+                            {% else %}
+                                <img src="http://127.0.0.1:8000/static/img/avatar.jpg" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
+                            {% endif %}
+                                <div class="items-info_text">
+                                    <span class="title">{{ article.title }}</span>
+                                    <span class="owner">{{ article.owner }}</span>
+                                </div>
+                            </div>
+                            <span class="views">1201</span>
+                            <span class="comments">14</span>
+                            <span class="date">{{ article.created_datetime }}</span>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="menu-right">
+                <h3 class="last-articles_title">Новые статьи</h3>
+                <div class="menu-right_box">
+                    asd
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 @import "../components/colors";
+@import "../components/box";
 
 @mixin box-alignment {
   display: grid;
@@ -16,6 +17,10 @@
 
 @mixin pt-10 {
   padding-top: 10px;
+}
+
+.main-container {
+  @include content-box;
 }
 
 .add-post {

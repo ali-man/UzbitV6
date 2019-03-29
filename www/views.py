@@ -12,6 +12,7 @@ from www.models import Tags, CategoryOfArticles, Articles
 class HomePageViews(View):
     def get(self, request):
         form = ArticleForm()
+        articles = Articles.objects.filter(status=2).order_by('-created_datetime')
 
         return render(request, 'www/home.html', locals())
 

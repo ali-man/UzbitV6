@@ -15,8 +15,12 @@
 
 {% block main-content %}
 
+    {% include 'www/home/main.html' %}
+
     {% if user.is_authenticated %}
+        <div class="main-container box-shadow">
         {% include 'www/add-article.html' %}
+        </div>
     {% endif %}
 
 {% endblock %}
