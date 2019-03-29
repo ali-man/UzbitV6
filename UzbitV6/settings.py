@@ -9,7 +9,7 @@ if LOCAL:
     DEBUG = True
     ALLOWED_HOSTS = []
 else:
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = ALLOWED_HOSTS
 
 INSTALLED_APPS = [
