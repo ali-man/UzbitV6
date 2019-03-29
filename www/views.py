@@ -1,37 +1,60 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from pytils.translit import slugify
 
 from www.forms import ArticleForm
-from www.models import Tags, CategoryOfArticles
+from www.models import Tags, CategoryOfArticles, Articles
 
 
 class HomePageViews(View):
     def get(self, request):
-        # data = {
-        #     'category': CategoryOfArticles.objects.all(),
-        #     'tags': Tags.objects.all()
-        # }
-        # form = PostAdminForm(data)
         form = ArticleForm()
 
         return render(request, 'www/home.html', locals())
 
     def post(self, request):
-        form = ArticleForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Ваша статья успешно добавлена!')
-            messages.warning(request, 'Ваша статья на модерации')
-            return redirect('/')
+        owner = request.user
+        title = request.POST['title']
+        slug = slugify(request.POST['title'])
+        category = request.POST['category']
+        poster = request.FILES['poster']
+        description = request.POST['description']
+        tags = request.POST.getlist('tags[]')
+
+        # Get Article
+        get_category = CategoryOfArticles.objects.get(id=category)
+        # Create Article
+        create_article = Articles(
+            owner=owner,
+            title=title,
+            slug=slug,
+            category=get_category,
+            poster=poster,
+            description=description,
+        )
+
+        if request.user.is_staff:
+            create_article.status = 2
+            messages.success(request, 'Ваша статья успешно опубликована!')
         else:
-            messages.error(request, 'Не правильно заполнены поля')
-            return redirect('/')
+            create_article.status = 0
+            messages.success(request, 'Ваша статья успешно добавлена!')
+            messages.warning(request, 'Ваша статья ожидает модерации')
+
+        create_article.save()
+        # Adding Tags for Article
+        for tag in tags:
+            try:
+                _tag = Tags.objects.get(name=tag)
+                create_article.tags.add(_tag)
+            except Tags.DoesNotExist:
+                _tag = Tags.objects.create(name=tag, slug=slugify(tag))
+                create_article.tags.add(_tag)
+
+        return redirect('/')
 
 
 class AjaxQuery:
@@ -44,7 +67,6 @@ class AjaxQuery:
         if request.method == 'POST':
             username = request.POST.get('username', None)
             password = request.POST.get('password', None)
-
 
             if username is not None and password is not None:
                 user = authenticate(username=username, password=password)
@@ -69,7 +91,7 @@ class AjaxQuery:
     @staticmethod
     def logout(request):
         logout(request)
-        messages.success(request, 'Вы успешло разлогинились!')
+        messages.info(request, 'Вы успешло разлогинились!')
         return redirect('/')
 
     @staticmethod
@@ -90,16 +112,13 @@ class AjaxQuery:
                     search_username = None
 
                 if search_username is None:
-                    User.objects.create(
-                        username=username,
-                        email=email,
-                        password=make_password(password2)
-                    )
+                    new_user = User.objects.create_user(username, email, password2)
+                    new_user.save()
                     user = authenticate(username=username, password=password2)
                     login(request, user)
 
                     messages.success(request, 'Вы успешно зарегестрировались!')
-                    messages.success(request, 'Вы успешно авторизованы!')
+                    messages.info(request, 'Вы авторизованы!')
                     return redirect('/')
 
                 if search_username is not None:
