@@ -28,7 +28,7 @@ $(document).ready(function () {
             }, 800, function () {
                 $(this).remove();
             })
-        }, 5000);
+        }, 8000);
 
         $message.children('li').click(function () {
             $(this).stop().animate({

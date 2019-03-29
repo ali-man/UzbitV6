@@ -37,11 +37,51 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="article-info">
-                <form action="{% url 'home' %}" method="POST">
-                    {{ form }}
+            <div class="article-info pl-4 pr-4">
+                <form action="{% url 'home' %}" enctype="multipart/form-data" method="POST" class="md-form">
+
+                    <input type="number" name="owner" id="id_owner" value="{{ user.id }}" class="d-none">
+                    <input type="text" name="slug" maxlength="30" placeholder="Slug" id="id_slug" value="slug" class="d-none">
+
+                    <div class="add-article_header">
+                        <div class="md-form form-sm" style="width: 100%;">
+                            <input type="text" name="title" id="id_title" class="form-control form-control-sm" required>
+                            <label for="id_title">Заголовок статьи</label>
+                        </div>
+
+                        <div class="category">
+                            <select name="category" id="id_category" required>
+                                {% for cat in form.category %}
+                                    {{ cat }}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="file-field">
+                            <a class="btn-floating purple-gradient mt-0 float-left">
+                                <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                                <input type="file" name="poster" accept="image/*" id="id_poster">
+                            </a>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Загрузите постер">
+                            </div>
+                        </div>
+                    </div>
+
+                    {{ form.description }}
+
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-success">Добавить на сайт</button>
+                    <div class="add-article_footer">
+                        <div class="tags">
+                            <select name="tags[]" id="id_tags" multiple>
+                                <option value="one">One</option>
+                                <option value="two">Two</option>
+                                <option value="three">Three</option>
+                                <option value="four">Four</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Добавить на сайт</button>
+                    </div>
                 </form>
             </div>
         </div>

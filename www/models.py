@@ -39,7 +39,8 @@ class Tags(models.Model):
 class CategoryOfArticles(models.Model):
     name = models.CharField(verbose_name='Название категории', max_length=30)
     slug = models.SlugField(verbose_name='Адрес категории', max_length=30, unique=True)
-    icon = models.ImageField(verbose_name='Иконка категории', upload_to='category-icon/%Y/%m/%d/', null=True, blank=True)
+    icon = models.ImageField(verbose_name='Иконка категории', upload_to='category-icon/%Y/%m/%d/', null=True,
+                             blank=True)
 
     class Meta:
         verbose_name = 'Категория'
@@ -49,6 +50,7 @@ class CategoryOfArticles(models.Model):
         return self.name
 
 
+# TODO: remove field slug
 class Articles(models.Model):
     MODERATION = 0
     PENDING = 1
@@ -63,7 +65,8 @@ class Articles(models.Model):
     category = models.ForeignKey(CategoryOfArticles, verbose_name='Категория', on_delete=models.CASCADE)
     title = models.CharField(verbose_name='Заголовок статьи', max_length=100)
     slug = models.SlugField(verbose_name='Адрес статьи', max_length=100)
-    poster = models.ImageField(verbose_name='Постер/Изображение', upload_to='articles-poster/%Y/%m/%d/', null=True, blank=True)
+    poster = models.ImageField(verbose_name='Постер/Изображение', upload_to='articles-poster/%Y/%m/%d/', null=True,
+                               blank=True)
     description = RichTextUploadingField(verbose_name='Описание')
     tags = models.ManyToManyField(Tags, verbose_name='Теги', blank=True)
     status = models.IntegerField(verbose_name='Статус', choices=STATUS, default=PUBLISHED)
