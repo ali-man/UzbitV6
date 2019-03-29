@@ -26,6 +26,12 @@ class HomePageViews(View):
         form = ArticleForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Ваша статья успешно добавлена!')
+            messages.warning(request, 'Ваша статья на модерации')
+            return redirect('/')
+        else:
+            messages.error(request, 'Не правильно заполнены поля')
+            return redirect('/')
 
 
 class AjaxQuery:
