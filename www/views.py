@@ -12,7 +12,7 @@ from www.models import Tags, CategoryOfArticles, Articles
 class HomePageViews(View):
     def get(self, request):
         form = ArticleForm()
-        articles = Articles.objects.filter(status=2).order_by('-created_datetime')
+        articles = Articles.objects.filter(status=2).order_by('-created_datetime')[:12]
 
         return render(request, 'www/home.html', locals())
 
@@ -21,7 +21,7 @@ class HomePageViews(View):
         title = request.POST['title']
         slug = slugify(request.POST['title'])
         category = request.POST['category']
-        poster = request.FILES['poster']
+        poster = request.FILES.get('poster', None)
         description = request.POST['description']
         tags = request.POST.getlist('tags[]')
 
@@ -33,9 +33,10 @@ class HomePageViews(View):
             title=title,
             slug=slug,
             category=get_category,
-            poster=poster,
             description=description,
         )
+        if poster is not None:
+            create_article.poster = poster
 
         if request.user.is_staff:
             create_article.status = 2
