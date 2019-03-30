@@ -1,10 +1,13 @@
 from django.urls import path
 
-from www.views import AjaxQuery
+from www.views import AuthQuery, ArticleListViews
 
-app_name = 'ajax'
+app_name = 'www'
 urlpatterns = [
-    path('login/', AjaxQuery.login, name='login'),
-    path('logout/', AjaxQuery.logout, name='logout'),
-    path('register/', AjaxQuery.register, name='register'),
+    # Auth routers
+    path('login/', AuthQuery.login, name='login'),
+    path('logout/', AuthQuery.logout, name='logout'),
+    path('register/', AuthQuery.register, name='register'),
+    # Articles routers
+    path('articles/', ArticleListViews.as_view(), name='articles'),
 ]

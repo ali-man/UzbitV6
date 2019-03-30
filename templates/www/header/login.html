@@ -1,7 +1,7 @@
 {% if user.is_authenticated %}
     <div class="login">
         <div class="login__notification">Уведомления</div>
-        <a href="{% url 'ajax:logout' %}" id="logout" class="login__profile">Профиль</a>
+        <a href="{% url 'www:logout' %}" id="logout" class="login__profile">Профиль</a>
     </div>
 {% else %}
 

@@ -1,0 +1,10 @@
+{% extends 'www/base.html' %}
+{% load static %}
+
+{% block main-content %}
+{% for article in articles %}
+    {{ article.title }}
+    <hr>
+{% endfor %}
+
+{% endblock %}

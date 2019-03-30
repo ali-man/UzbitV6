@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic.list import ListView
 from pytils.translit import slugify
 
 from www.forms import ArticleForm
@@ -60,7 +61,7 @@ class HomePageViews(View):
         return redirect('/')
 
 
-class AjaxQuery:
+class AuthQuery:
 
     @staticmethod
     def login(request):
@@ -127,3 +128,11 @@ class AjaxQuery:
                 if search_username is not None:
                     messages.error(request, 'Пользователь с таким именем уже зарегестрирован')
                     return redirect('/')
+
+
+class ArticleListViews(ListView):
+    template_name = 'www/articles/list.html'
+    # model = Articles
+    queryset = Articles.objects.filter(status=2).order_by("-created_datetime")
+    context_object_name = 'articles'
+    paginate_by = 2
