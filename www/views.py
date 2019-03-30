@@ -23,7 +23,7 @@ class HomePageViews(View):
         category = request.POST['category']
         poster = request.FILES.get('poster', None)
         description = request.POST['description']
-        tags = request.POST.getlist('tags[]')
+        tags = request.POST.getlist('tags[]', None)
 
         # Get Article
         get_category = CategoryOfArticles.objects.get(id=category)
@@ -48,13 +48,14 @@ class HomePageViews(View):
 
         create_article.save()
         # Adding Tags for Article
-        for tag in tags:
-            try:
-                _tag = Tags.objects.get(name=tag)
-                create_article.tags.add(_tag)
-            except Tags.DoesNotExist:
-                _tag = Tags.objects.create(name=tag, slug=slugify(tag))
-                create_article.tags.add(_tag)
+        if tags is not None:
+            for tag in tags:
+                try:
+                    _tag = Tags.objects.get(name=tag)
+                    create_article.tags.add(_tag)
+                except Tags.DoesNotExist:
+                    _tag = Tags.objects.create(name=tag, slug=slugify(tag))
+                    create_article.tags.add(_tag)
 
         return redirect('/')
 
