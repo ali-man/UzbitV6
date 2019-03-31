@@ -2,7 +2,12 @@ $(document).ready(function () {
 
     let loginLink = $('#sign-in');
     let registerLink = $('#register');
+    let profileLink = $('#profile');
     let csrf = $("input[name=csrfmiddlewaretoken]").val();
+
+    profileLink.click(function () {
+        $('#profile_display').toggleClass("d-none");
+    });
 
     loginLink.on("click", function () {
         let singInDisplay = $("#sign-in_display");

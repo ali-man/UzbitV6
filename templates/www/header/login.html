@@ -1,10 +1,19 @@
 {% if user.is_authenticated %}
     <div class="login">
-        <div class="login__notification">Уведомления</div>
-        <a href="{% url 'www:logout' %}" id="logout" class="login__profile">Профиль</a>
+        <div class="login__notification">
+            <i class="fas fa-bell"></i>
+            Уведомления
+        </div>
+        <div id="profile" class="login__profile">
+            <i class="fas fa-user-circle"></i>
+            Профиль
+        </div>
+        <div id="profile_display" class="login__profile__box-hide box-shadow d-none">
+            {% include 'www/forms/profile.html' %}
+        </div>
     </div>
-{% else %}
 
+{% else %}
     <div class="login">
         <div class="login__register">
             <span id="register" class="login__register__title">

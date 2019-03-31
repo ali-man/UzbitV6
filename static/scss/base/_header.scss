@@ -17,6 +17,66 @@
     justify-content: space-between;
     align-items: center;
     height: 40px;
+    &__notification {
+      cursor: pointer;
+      font-size: 14px;
+      color: #363C4B;
+      i {
+        padding-right: 5px;
+      }
+    }
+    &__profile {
+      @extend .login__notification;
+      &__box-hide {
+        border: 1px solid #ccc;
+        width: 250px;
+        height: auto;
+        background-color: #fff;
+        position: absolute;
+        right: 0;
+        top: 30px;
+        z-index: 1;
+        padding: 15px;
+        .profile-menu {
+          &__head {
+            display: flex;
+            justify-content: space-between;
+            span.username {
+              font-size: 14px;
+              color: $color-text;
+              clear: both;
+            }
+            span.user-group {
+              @extend span.username;
+            }
+          }
+          &__body {
+            display: flex;
+            justify-content: space-between;
+            &__avatar {
+              width: 76px;
+              height: 76px;
+            }
+            &__items {
+              display: grid;
+              grid-template-columns: 1fr;
+              a {
+                font-size: 14px;
+                color: $color-text;
+              }
+            }
+          }
+          &__footer {
+            display: flex;
+            justify-content: space-between;
+            a {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+
     &__register {
       &__title {
         cursor: pointer;

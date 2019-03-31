@@ -4,11 +4,13 @@
         <div class="col-12 col-md-3">
             <div class="owner-info">
                 <div class="owner-info__avatar">
-                {% if user.profile.avatar %}
-                    <img src="{{ user.profile.avatar }}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
-                {% else %}
-                    <img src="{% static 'img/avatar.jpg' %}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
-                {% endif %}
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" alt=""
+                             class="img-fluid z-depth-1 rounded-circle box-shadow">
+                    {% else %}
+                        <img src="{% static 'img/avatar.jpg' %}" alt=""
+                             class="img-fluid z-depth-1 rounded-circle box-shadow">
+                    {% endif %}
                 </div>
                 <div class="owner-info__about">
                     <span class="owner-info__about__username">Hello, {{ user.username }}</span>
@@ -41,7 +43,8 @@
                 <form action="{% url 'home' %}" enctype="multipart/form-data" method="POST" class="md-form">
 
                     <input type="number" name="owner" id="id_owner" value="{{ user.id }}" class="d-none">
-                    <input type="text" name="slug" maxlength="30" placeholder="Slug" id="id_slug" value="slug" class="d-none">
+                    <input type="text" name="slug" maxlength="30" placeholder="Slug" id="id_slug" value="slug"
+                           class="d-none">
 
                     <div class="add-article_header">
                         <div class="md-form form-sm" style="width: 100%;">
@@ -67,10 +70,7 @@
                             </div>
                         </div>
                     </div>
-
                     {{ form.description }}
-
-                    {% csrf_token %}
                     <div class="add-article_footer">
                         <div class="tags">
                             <select name="tags[]" id="id_tags" multiple>

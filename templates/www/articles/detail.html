@@ -1,0 +1,22 @@
+{% extends 'www/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/articles-detail.css' %}">
+{% endblock %}
+
+{% block title %}
+Uzbit - Detail article
+{% endblock %}
+
+{% block main-content %}
+
+    <div class="content-main">
+        {{ article.title }}
+        {% for cat in cats %}
+            {{ cat }}
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

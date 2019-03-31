@@ -1,10 +1,21 @@
 {% extends 'www/base.html' %}
 {% load static %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/articles.css' %}">
+{% endblock %}
+
+{% block title %}
+Все статьи
+{% endblock %}
+
 {% block main-content %}
-{% for article in articles %}
-    {{ article.title }}
-    <hr>
-{% endfor %}
+
+    <div class="content-main">
+    {% for article in articles %}
+        <a href="{% url 'www:articles-detail' article.id article.slug %}">{{ article.title }}</a>
+        <hr>
+    {% endfor %}
+    </div>
 
 {% endblock %}

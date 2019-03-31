@@ -1,0 +1,26 @@
+{% load static %}
+<div class="profile-menu">
+    <div class="profile-menu__head">
+        <span class="username">{{ user.username }}</span>
+        <span class="user-group">Группа: Игрок</span>
+    </div>
+    <div class="profile-menu__body">
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="" class="profile-menu__body__avatar">
+        {% else %}
+            <img src="{% static 'img/avatar.jpg' %}" alt="" class="profile-menu__body__avatar">
+        {% endif %}
+        <div class="profile-menu__body__items">
+            <a href="/">Мои баллы 1200</a>
+            <a href="/">Мои статьи 12</a>
+            <a href="/">Мои комментария 37</a>
+            <a href="/">Мои лайки 105</a>
+        </div>
+    </div>
+    <div class="profile-menu__footer">
+        <a href="/" class="msg">Сообщений 1/23</a>
+        <a href="/" class="subscribes">Мои подписки 2/8</a>
+        <a href="/" class="settings"><i class="fas fa-user-cog"></i></a>
+    </div>
+    <a href="{% url 'www:logout' %}" class="brn btn-danger">Выход</a>
+</div>

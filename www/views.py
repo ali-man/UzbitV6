@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views import View
+from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from pytils.translit import slugify
 
@@ -11,13 +12,15 @@ from www.models import Tags, CategoryOfArticles, Articles
 
 
 class HomePageViews(View):
-    def get(self, request):
+    @staticmethod
+    def get(request):
         form = ArticleForm()
         articles = Articles.objects.filter(status=2).order_by('-created_datetime')[:12]
 
         return render(request, 'www/home.html', locals())
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         owner = request.user
         title = request.POST['title']
         slug = slugify(request.POST['title'])
@@ -132,7 +135,26 @@ class AuthQuery:
 
 class ArticleListViews(ListView):
     template_name = 'www/articles/list.html'
-    # model = Articles
     queryset = Articles.objects.filter(status=2).order_by("-created_datetime")
     context_object_name = 'articles'
-    paginate_by = 2
+    paginate_by = 4
+
+
+class ArticleDetailViews(DetailView):
+    template_name = 'www/articles/detail.html'
+    model = Articles
+    context_object_name = 'article'
+    pk_url_kwarg = 'id'
+    slug_field = 'slug'
+
+    def get_context_data(self, **kwargs):
+        context = super(ArticleDetailViews, self).get_context_data(**kwargs)
+        # try:
+        #     context["pn"] = self.request.GET("page")
+        # except TypeError:
+        #     context["pn"] = "1"
+        # print(context["pn"])
+        # context["cats"] = CategoryOfArticles.objects.order_by("name")
+        return context
+
+

@@ -1,0 +1,6 @@
+@import "components/colors";
+@import "components/box";
+
+.content-main {
+  @include content-box;
+}

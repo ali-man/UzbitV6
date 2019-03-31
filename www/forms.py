@@ -1,4 +1,4 @@
-from ckeditor.widgets import CKEditorWidget
+# from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.contrib.auth.models import User
