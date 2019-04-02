@@ -6,6 +6,7 @@ __pycache__/
 migrations/
 local_settings.py
 media
+db.sqlite3
 
 venv/
 .idea/
