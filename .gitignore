@@ -1,4 +1,12 @@
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+migrations/
+local_settings.py
+media
+
 venv/
 .idea/
 manage.py
-UzbitV6/local_settings.py

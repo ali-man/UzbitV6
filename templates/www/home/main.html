@@ -1,3 +1,4 @@
+{% load static %}
 <div class="content-main">
     <div class="row">
         <div class="col-12 col-md-8">
@@ -18,11 +19,11 @@
                             {% if article.poster %}
                                 <img src="{{ article.poster.url }}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
                             {% else %}
-                                <img src="http://127.0.0.1:8000/static/img/avatar.jpg" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
+                                <img src="{% static 'img/avatar.jpg' %}" alt="" class="img-fluid z-depth-1 rounded-circle box-shadow">
                             {% endif %}
                                 <div class="items-info_text">
-                                    <span class="title">{{ article.title }}</span>
-                                    <span class="owner">{{ article.owner }}</span>
+                                    <a href="{% url 'www:articles-detail' article.id article.slug %}" class="title" title="{{ article.title }}">{{ article.title }}</a>
+                                    <span class="owner">{{ article.category }}</span>
                                 </div>
                             </div>
                             <span class="views">1201</span>

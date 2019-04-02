@@ -50,14 +50,19 @@
             grid-template-columns: 1fr 4fr;
             grid-gap: 10px;
             img {
-              max-width: 40px;
+              min-width: 40px;
+              min-height: 40px;
             }
             &_text {
               display: grid;
               grid-template-columns: 1fr;
-              span.title {
+              a.title {
                 font-size: 14px;
                 color: $color-text;
+                width: 175px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
               }
               span.owner {
                 font-size: 12px;
